@@ -26,15 +26,4 @@ public record PersonDto(
         person.getRole()
     );
   }
-
-  /**
-   * Gets password.
-   *
-   * @return the password
-   */
-  @JsonIgnore
-  public String getPassword() {
-    return null;
-  }
-
 }

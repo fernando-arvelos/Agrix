@@ -39,11 +39,11 @@ public class Person {
    * @param password the password
    * @param role     the role
    */
-  public Person(Long id, String username, String password, String role) {
+  public Person(Long id, String username, String password, Role role) {
     this.id = id;
     this.username = username;
     this.password = password;
-    this.role = Role.valueOf(role);
+    this.role = role;
   }
 
   /**

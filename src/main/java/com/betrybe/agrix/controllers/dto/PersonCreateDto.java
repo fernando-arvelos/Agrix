@@ -2,6 +2,7 @@ package com.betrybe.agrix.controllers.dto;
 
 
 import com.betrybe.agrix.models.entities.Person;
+import com.betrybe.agrix.security.Role;
 
 /**
  * The type Person create dto.
@@ -9,7 +10,7 @@ import com.betrybe.agrix.models.entities.Person;
 public record PersonCreateDto(
     String username,
     String password,
-    String role) {
+    Role role) {
 
   /**
    * To entity person.
