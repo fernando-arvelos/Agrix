@@ -31,13 +31,6 @@ public class Person {
 
   private Role role;
 
-//  public Person(Long id, String username, String password, Role role) {
-//    this.id = id;
-//    this.username = username;
-//    this.password = password;
-//    this.role = role;
-//  }
-
   /**
    * Gets id.
    *
