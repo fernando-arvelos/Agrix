@@ -26,5 +26,4 @@ public class GeneralControllerAdvice {
         .status(HttpStatus.NOT_FOUND)
         .body(exception.getMessage());
   }
-
 }

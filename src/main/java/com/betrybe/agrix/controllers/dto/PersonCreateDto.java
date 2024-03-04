@@ -18,10 +18,6 @@ public record PersonCreateDto(
    * @return the person
    */
   public Person toEntity() {
-    Person person = new Person();
-    person.setUsername(username);
-    person.setPassword(password);
-    person.setRole(role);
-    return person;
+    return new Person(null, username, password, role);
   }
 }
