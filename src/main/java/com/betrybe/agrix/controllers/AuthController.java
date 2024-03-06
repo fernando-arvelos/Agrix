@@ -5,6 +5,7 @@ import com.betrybe.agrix.controllers.dto.TokenDto;
 import com.betrybe.agrix.models.entities.Person;
 import com.betrybe.agrix.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,6 +35,18 @@ public class AuthController {
       TokenService tokenService) {
     this.authenticationManager = authenticationManager;
     this.tokenService = tokenService;
+  }
+
+
+  /**
+   * Custom authentication manager authentication manager.
+   *
+   * @return the authentication manager
+   * @throws Exception the exception
+   */
+  @Bean
+  public AuthenticationManager customAuthenticationManager() throws Exception {
+    return authenticationManager;
   }
 
   /**
