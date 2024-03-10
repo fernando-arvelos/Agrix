@@ -1,11 +1,16 @@
-FROM maven:3-openjdk-17 AS build-image
-WORKDIR /to-build-app
-COPY . .
-RUN mvn dependency:go-offline
-RUN mvn package
-
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jdk-jammy as build-image
 WORKDIR /app
-COPY --from=build-image /to-build-app/target/*.jar ./app.jar
+
+COPY .mvn/ .mvn
+COPY ./src/main/ ./src/main/
+COPY mvnw pom.xml ./
+
+RUN ./mvnw clean package
+
+
+FROM eclipse-temurin:17-jre-jammy
+
+COPY --from=build-image /app/target/*.jar /app/app.jar
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
