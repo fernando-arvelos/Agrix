@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,18 +38,6 @@ public class AuthController {
     this.tokenService = tokenService;
   }
 
-
-  /**
-   * Custom authentication manager authentication manager.
-   *
-   * @return the authentication manager
-   * @throws Exception the exception
-   */
-  @Bean
-  public AuthenticationManager customAuthenticationManager() throws Exception {
-    return authenticationManager;
-  }
-
   /**
    * Login token dto.
    *
@@ -56,6 +45,7 @@ public class AuthController {
    * @return the token dto
    */
   @PostMapping("/login")
+  @CrossOrigin(origins = "http://fernando-arvelos-agrix.fly.dev")
   public TokenDto login(@RequestBody AuthDto authDto) {
     UsernamePasswordAuthenticationToken usernamePassword =
         new UsernamePasswordAuthenticationToken(authDto.username(), authDto.password());
